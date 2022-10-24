@@ -3,41 +3,35 @@ package com.example.onboardingscreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.onboardingscreen.ui.theme.OnBoardingScreenTheme
+import androidx.compose.ui.graphics.toArgb
+import com.example.onboardingscreen.ui.onBoarding.OnBoarding
+import com.example.onboardingscreen.ui.theme.OnBoardingTheme
+import com.google.accompanist.pager.ExperimentalPagerApi
 
 class MainActivity : ComponentActivity() {
+
+    @ExperimentalPagerApi
+    @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
-            OnBoardingScreenTheme {
-                // A surface container using the 'background' color from the theme
+            OnBoardingTheme {
+                window.statusBarColor = MaterialTheme.colorScheme.background.toArgb()
+                window.navigationBarColor = MaterialTheme.colorScheme.background.toArgb()
+
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = MaterialTheme.colorScheme.background,
+                    modifier = Modifier.fillMaxSize()
                 ) {
-                    Greeting("Android")
+                    OnBoarding()
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    OnBoardingScreenTheme {
-        Greeting("Android")
     }
 }
