@@ -133,8 +133,8 @@ fun OnBoardingPagerItem(item: OnBoardingPagerItemData) {
 
 @Composable
 fun BottomSection(
-    itemsNumber: Int = 3,
-    selectedIndex: Int = 1,
+    itemsNumber: Int,
+    selectedIndex: Int,
     onNextClicked: () -> Unit
 ) {
     Box(
@@ -162,8 +162,8 @@ fun BottomSection(
 
 @Composable
 fun BoxScope.Indicators(
-    itemsNumber: Int = 3,
-    selectedIndex: Int = 1
+    itemsNumber: Int,
+    selectedIndex: Int,
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -177,7 +177,7 @@ fun BoxScope.Indicators(
 }
 
 @Composable
-fun Indicator(isSelected: Boolean = false) {
+fun Indicator(isSelected: Boolean) {
     val animationTargetValue = if (isSelected) 25.dp else 10.dp
     val width = animateDpAsState(
         targetValue = animationTargetValue,
